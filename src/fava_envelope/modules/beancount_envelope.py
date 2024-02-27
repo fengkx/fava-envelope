@@ -1,6 +1,10 @@
 # Debug
 from __future__ import annotations
 
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
+
 import collections
 import datetime
 import logging

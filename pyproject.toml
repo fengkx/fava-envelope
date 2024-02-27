@@ -19,7 +19,7 @@ classifiers = [
 
 dependencies = [
     "fava>=1.26",
-    "pandas>=2.0.3",
+    "pandas<3",
 ]
 
 requires-python = ">=3.8"
