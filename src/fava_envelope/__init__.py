@@ -92,7 +92,15 @@ class EnvelopeBudget(FavaExtensionBase):
 
         envelope_table_rows = []
 
+        
         if month is not None:
+            total_row = {}
+            total_row["Account"] = 'Total'
+
+            total_row["Budgeted"] = 0
+            total_row["Activity"] = 0
+            total_row["Available"] = 0
+
             for index, e_row in self.envelope_tables.iterrows():
                 row = {}
                 row["Account"] = index
@@ -100,6 +108,13 @@ class EnvelopeBudget(FavaExtensionBase):
                 row["Activity"] = e_row[month, "activity"]
                 row["Available"] = e_row[month, "available"]
                 envelope_table_rows.append(row)
+
+                total_row["Budgeted"] += e_row[month, "budgeted"]
+                total_row["Activity"] += e_row[month, "activity"]
+                total_row["Available"] += e_row[month, "available"]
+            envelope_table_rows.append(total_row)
+
+            
 
         return envelope_table_types, envelope_table_rows
 
